@@ -1,0 +1,183 @@
+$ vendor/bin/pest tests/Unit/Services/SimilarPersonServiceTest.php
+# 2026-11-02 18:28:37 | branch tdd-issue-1233 | commit a0cdf7d83
+
+
+   FAIL  Tests\Unit\Services\SimilarPersonServiceTest
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "já normalizado"                             0.11s  
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "maiúsculas"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "maiúsculas e minúsculas misturadas"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "acentos agudo, til e circunflexo"           0.05s  
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "acentos em maiúsculas"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "trema e grave"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "espaços nas pontas"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "espaços repetidos no meio"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "tabulação e quebra de linha"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "texto vazio"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "só espaços"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "nulo"
+  ✓ pessoa com mesma data e mesmo nome normalizado e parecida with data set "nomes idênticos"
+  ✓ pessoa com mesma data e mesmo nome normalizado e parecida with data set "diferença só de acento"
+  ✓ pessoa com mesma data e mesmo nome normalizado e parecida with data set "diferença só de maiúsculas"
+  ✓ pessoa com mesma data e mesmo nome normalizado e parecida with data set "diferença só de espaços"
+  ✓ pessoa com nome ou data diferente nao e parecida with data set "mesma data e nome diferente"                 0.01s  
+  ✓ pessoa com nome ou data diferente nao e parecida with data set "mesmo nome e data diferente"
+  ✓ pessoa com nome ou data diferente nao e parecida with data set "limite: nascida um dia depois"
+  ✓ pessoa com nome ou data diferente nao e parecida with data set "limite: nascida um dia antes"
+  ✓ data de nascimento vazia nunca torna a pessoa parecida with data set "data informada vazia"
+  ✓ data de nascimento vazia nunca torna a pessoa parecida with data set "data informada nula"
+  ✓ data de nascimento vazia nunca torna a pessoa parecida with data set "data do cadastro existente nula"
+  ✓ data de nascimento vazia nunca torna a pessoa parecida with data set "as duas datas nulas"
+  ✓ data de nascimento vazia nunca torna a pessoa parecida with data set "as duas datas vazias"
+  ✓ nome vazio nunca torna a pessoa parecida with data set "os dois nomes vazios"
+  ✓ nome vazio nunca torna a pessoa parecida with data set "os dois nomes só com espaços"
+  ✓ nome vazio nunca torna a pessoa parecida with data set "os dois nomes nulos"
+  ⨯ inclusao com pessoas parecidas exibe o aviso                                                                 0.51s  
+  ⨯ inclusao sem pessoas parecidas nao exibe o aviso
+  ⨯ inclusao confirmada como pessoa nova nao exibe o aviso                                                       0.01s  
+  ⨯ inclusao sem data de nascimento nao exibe o aviso with data set "data vazia"                                 0.01s  
+  ⨯ inclusao sem data de nascimento nao exibe o aviso with data set "data nula"
+  ⨯ edicao sem mudar nome nem data nao exibe o aviso
+  ⨯ edicao que passa a coincidir com outra pessoa exibe o aviso                                                  0.01s  
+  ⨯ edicao que passa a coincidir mas foi confirmada nao exibe o aviso                                            0.01s  
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > inclusao com pessoas parecidas exibe o aviso          Error   
+  Call to undefined method App\Services\SimilarPersonService::shouldWarn()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:179
+    175▕ 
+    176▕     public function test_inclusao_com_pessoas_parecidas_exibe_o_aviso(): void
+    177▕     {
+    178▕         // Act
+  ➜ 179▕         $avisa = $this->service->shouldWarn(
+    180▕             isNew: true,
+    181▕             birthDate: '2015-03-10',
+    182▕             hasSimilarPeople: true,
+    183▕             confirmedNotSimilar: false,
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:179
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > inclusao sem pessoas parecidas nao exibe o aviso      Error   
+  Call to undefined method App\Services\SimilarPersonService::shouldWarn()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:194
+    190▕ 
+    191▕     public function test_inclusao_sem_pessoas_parecidas_nao_exibe_o_aviso(): void
+    192▕     {
+    193▕         // Act
+  ➜ 194▕         $avisa = $this->service->shouldWarn(
+    195▕             isNew: true,
+    196▕             birthDate: '2015-03-10',
+    197▕             hasSimilarPeople: false,
+    198▕             confirmedNotSimilar: false,
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:194
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > inclusao confirmada como pessoa nova nao exibe o av…  Error   
+  Call to undefined method App\Services\SimilarPersonService::shouldWarn()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:209
+    205▕ 
+    206▕     public function test_inclusao_confirmada_como_pessoa_nova_nao_exibe_o_aviso(): void
+    207▕     {
+    208▕         // Act
+  ➜ 209▕         $avisa = $this->service->shouldWarn(
+    210▕             isNew: true,
+    211▕             birthDate: '2015-03-10',
+    212▕             hasSimilarPeople: true,
+    213▕             confirmedNotSimilar: true,
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:209
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > inclusao sem data de nascimento nao exibe o aviso w…  Error   
+  Call to undefined method App\Services\SimilarPersonService::shouldWarn()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:225
+    221▕     #[DataProvider('datasDeNascimentoNaoInformadas')]
+    222▕     public function test_inclusao_sem_data_de_nascimento_nao_exibe_o_aviso(?string $dataNascimento): void
+    223▕     {
+    224▕         // Act
+  ➜ 225▕         $avisa = $this->service->shouldWarn(
+    226▕             isNew: true,
+    227▕             birthDate: $dataNascimento,
+    228▕             hasSimilarPeople: true,
+    229▕             confirmedNotSimilar: false,
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:225
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > inclusao sem data de nascimento nao exibe o aviso w…  Error   
+  Call to undefined method App\Services\SimilarPersonService::shouldWarn()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:225
+    221▕     #[DataProvider('datasDeNascimentoNaoInformadas')]
+    222▕     public function test_inclusao_sem_data_de_nascimento_nao_exibe_o_aviso(?string $dataNascimento): void
+    223▕     {
+    224▕         // Act
+  ➜ 225▕         $avisa = $this->service->shouldWarn(
+    226▕             isNew: true,
+    227▕             birthDate: $dataNascimento,
+    228▕             hasSimilarPeople: true,
+    229▕             confirmedNotSimilar: false,
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:225
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > edicao sem mudar nome nem data nao exibe o aviso      Error   
+  Call to undefined method App\Services\SimilarPersonService::shouldWarn()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:248
+    244▕ 
+    245▕     public function test_edicao_sem_mudar_nome_nem_data_nao_exibe_o_aviso(): void
+    246▕     {
+    247▕         // Act
+  ➜ 248▕         $avisa = $this->service->shouldWarn(
+    249▕             isNew: false,
+    250▕             birthDate: '2015-03-10',
+    251▕             hasSimilarPeople: true,
+    252▕             confirmedNotSimilar: false,
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:248
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > edicao que passa a coincidir com outra pessoa exibe…  Error   
+  Call to undefined method App\Services\SimilarPersonService::shouldWarn()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:263
+    259▕ 
+    260▕     public function test_edicao_que_passa_a_coincidir_com_outra_pessoa_exibe_o_aviso(): void
+    261▕     {
+    262▕         // Act
+  ➜ 263▕         $avisa = $this->service->shouldWarn(
+    264▕             isNew: false,
+    265▕             birthDate: '2015-03-10',
+    266▕             hasSimilarPeople: true,
+    267▕             confirmedNotSimilar: false,
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:263
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > edicao que passa a coincidir mas foi confirmada nao…  Error   
+  Call to undefined method App\Services\SimilarPersonService::shouldWarn()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:278
+    274▕ 
+    275▕     public function test_edicao_que_passa_a_coincidir_mas_foi_confirmada_nao_exibe_o_aviso(): void
+    276▕     {
+    277▕         // Act
+  ➜ 278▕         $avisa = $this->service->shouldWarn(
+    279▕             isNew: false,
+    280▕             birthDate: '2015-03-10',
+    281▕             hasSimilarPeople: true,
+    282▕             confirmedNotSimilar: true,
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:278
+
+
+  Tests:    8 failed, 28 passed (28 assertions)
+  Duration: 1.33s
+
+
+exit code: 2
