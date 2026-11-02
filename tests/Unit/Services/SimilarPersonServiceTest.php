@@ -56,4 +56,111 @@ class SimilarPersonServiceTest extends TestCase
             'nulo' => [null, ''],
         ];
     }
+
+    /*
+     * Ciclo 2 - isSimilar()
+     * Regra: é parecida a pessoa com a mesma data de nascimento e nome parecido, ignorando
+     * acento e maiúsculas. Data de nascimento vazia não dispara a busca (issue #1233).
+     * Técnicas: particionamento de equivalência (parecida / não parecida / dados vazios) e
+     * análise de valor limite na data (mesmo dia, um dia antes e um dia depois).
+     */
+
+    #[DataProvider('pessoasParecidas')]
+    public function test_pessoa_com_mesma_data_e_mesmo_nome_normalizado_e_parecida(
+        string $nome,
+        string $outroNome
+    ): void {
+        // Arrange
+        $dataNascimento = '2015-03-10';
+
+        // Act
+        $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $dataNascimento);
+
+        // Assert
+        $this->assertTrue($parecida);
+    }
+
+    public static function pessoasParecidas(): array
+    {
+        return [
+            'nomes idênticos' => ['João da Silva', 'João da Silva'],
+            'diferença só de acento' => ['Joao da Silva', 'João da Silva'],
+            'diferença só de maiúsculas' => ['JOÃO DA SILVA', 'joão da silva'],
+            'diferença só de espaços' => [' João  da Silva ', 'João da Silva'],
+        ];
+    }
+
+    #[DataProvider('pessoasDiferentes')]
+    public function test_pessoa_com_nome_ou_data_diferente_nao_e_parecida(
+        string $nome,
+        string $dataNascimento,
+        string $outroNome,
+        string $outraDataNascimento
+    ): void {
+        // Arrange: os dados vêm do provedor.
+
+        // Act
+        $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $outraDataNascimento);
+
+        // Assert
+        $this->assertFalse($parecida);
+    }
+
+    public static function pessoasDiferentes(): array
+    {
+        return [
+            'mesma data e nome diferente' => ['João da Silva', '2015-03-10', 'Maria da Silva', '2015-03-10'],
+            'mesmo nome e data diferente' => ['João da Silva', '2015-03-10', 'João da Silva', '2016-08-22'],
+            'limite: nascida um dia depois' => ['João da Silva', '2015-03-10', 'João da Silva', '2015-03-11'],
+            'limite: nascida um dia antes' => ['João da Silva', '2015-03-10', 'João da Silva', '2015-03-09'],
+        ];
+    }
+
+    #[DataProvider('datasDeNascimentoVazias')]
+    public function test_data_de_nascimento_vazia_nunca_torna_a_pessoa_parecida(
+        ?string $dataNascimento,
+        ?string $outraDataNascimento
+    ): void {
+        // Arrange
+        $nome = 'João da Silva';
+
+        // Act
+        $parecida = $this->service->isSimilar($nome, $dataNascimento, $nome, $outraDataNascimento);
+
+        // Assert
+        $this->assertFalse($parecida);
+    }
+
+    public static function datasDeNascimentoVazias(): array
+    {
+        return [
+            'data informada vazia' => ['', '2015-03-10'],
+            'data informada nula' => [null, '2015-03-10'],
+            'data do cadastro existente nula' => ['2015-03-10', null],
+            'as duas datas nulas' => [null, null],
+            'as duas datas vazias' => ['', ''],
+        ];
+    }
+
+    #[DataProvider('nomesVazios')]
+    public function test_nome_vazio_nunca_torna_a_pessoa_parecida(?string $nome, ?string $outroNome): void
+    {
+        // Arrange
+        $dataNascimento = '2015-03-10';
+
+        // Act
+        $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $dataNascimento);
+
+        // Assert
+        $this->assertFalse($parecida);
+    }
+
+    public static function nomesVazios(): array
+    {
+        return [
+            'os dois nomes vazios' => ['', ''],
+            'os dois nomes só com espaços' => ['  ', ' '],
+            'os dois nomes nulos' => [null, null],
+        ];
+    }
 }

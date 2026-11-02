@@ -1,0 +1,311 @@
+$ vendor/bin/pest tests/Unit/Services/SimilarPersonServiceTest.php
+# 2026-11-02 17:48:22 | branch tdd-issue-1233 | commit db4d12022
+
+
+   FAIL  Tests\Unit\Services\SimilarPersonServiceTest
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "já normalizado"                             0.06s  
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "maiúsculas"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "maiúsculas e minúsculas misturadas"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "acentos agudo, til e circunflexo"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "acentos em maiúsculas"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "trema e grave"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "espaços nas pontas"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "espaços repetidos no meio"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "tabulação e quebra de linha"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "texto vazio"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "só espaços"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "nulo"
+  ⨯ pessoa com mesma data e mesmo nome normalizado e parecida with data set "nomes idênticos"                    0.42s  
+  ⨯ pessoa com mesma data e mesmo nome normalizado e parecida with data set "diferença só de acento"
+  ⨯ pessoa com mesma data e mesmo nome normalizado e parecida with data set "diferença só de maiúsculas"
+  ⨯ pessoa com mesma data e mesmo nome normalizado e parecida with data set "diferença só de espaços"
+  ⨯ pessoa com nome ou data diferente nao e parecida with data set "mesma data e nome diferente"
+  ⨯ pessoa com nome ou data diferente nao e parecida with data set "mesmo nome e data diferente"
+  ⨯ pessoa com nome ou data diferente nao e parecida with data set "limite: nascida um dia depois"
+  ⨯ pessoa com nome ou data diferente nao e parecida with data set "limite: nascida um dia antes"
+  ⨯ data de nascimento vazia nunca torna a pessoa parecida with data set "data informada vazia"
+  ⨯ data de nascimento vazia nunca torna a pessoa parecida with data set "data informada nula"
+  ⨯ data de nascimento vazia nunca torna a pessoa parecida with data set "data do cadastro existente nula"
+  ⨯ data de nascimento vazia nunca torna a pessoa parecida with data set "as duas datas nulas"
+  ⨯ data de nascimento vazia nunca torna a pessoa parecida with data set "as duas datas vazias"
+  ⨯ nome vazio nunca torna a pessoa parecida with data set "os dois nomes vazios"
+  ⨯ nome vazio nunca torna a pessoa parecida with data set "os dois nomes só com espaços"
+  ⨯ nome vazio nunca torna a pessoa parecida with data set "os dois nomes nulos"
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > pessoa com mesma data e mesmo nome normalizado e pa…  Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:77
+     73▕         // Arrange
+     74▕         $dataNascimento = '2015-03-10';
+     75▕ 
+     76▕         // Act
+  ➜  77▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $dataNascimento);
+     78▕ 
+     79▕         // Assert
+     80▕         $this->assertTrue($parecida);
+     81▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:77
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > pessoa com mesma data e mesmo nome normalizado e pa…  Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:77
+     73▕         // Arrange
+     74▕         $dataNascimento = '2015-03-10';
+     75▕ 
+     76▕         // Act
+  ➜  77▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $dataNascimento);
+     78▕ 
+     79▕         // Assert
+     80▕         $this->assertTrue($parecida);
+     81▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:77
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > pessoa com mesma data e mesmo nome normalizado e pa…  Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:77
+     73▕         // Arrange
+     74▕         $dataNascimento = '2015-03-10';
+     75▕ 
+     76▕         // Act
+  ➜  77▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $dataNascimento);
+     78▕ 
+     79▕         // Assert
+     80▕         $this->assertTrue($parecida);
+     81▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:77
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > pessoa com mesma data e mesmo nome normalizado e pa…  Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:77
+     73▕         // Arrange
+     74▕         $dataNascimento = '2015-03-10';
+     75▕ 
+     76▕         // Act
+  ➜  77▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $dataNascimento);
+     78▕ 
+     79▕         // Assert
+     80▕         $this->assertTrue($parecida);
+     81▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:77
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > pessoa com nome ou data diferente nao e parecida wi…  Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:103
+     99▕     ): void {
+    100▕         // Arrange: os dados vêm do provedor.
+    101▕ 
+    102▕         // Act
+  ➜ 103▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $outraDataNascimento);
+    104▕ 
+    105▕         // Assert
+    106▕         $this->assertFalse($parecida);
+    107▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:103
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > pessoa com nome ou data diferente nao e parecida wi…  Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:103
+     99▕     ): void {
+    100▕         // Arrange: os dados vêm do provedor.
+    101▕ 
+    102▕         // Act
+  ➜ 103▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $outraDataNascimento);
+    104▕ 
+    105▕         // Assert
+    106▕         $this->assertFalse($parecida);
+    107▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:103
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > pessoa com nome ou data diferente nao e parecida wi…  Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:103
+     99▕     ): void {
+    100▕         // Arrange: os dados vêm do provedor.
+    101▕ 
+    102▕         // Act
+  ➜ 103▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $outraDataNascimento);
+    104▕ 
+    105▕         // Assert
+    106▕         $this->assertFalse($parecida);
+    107▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:103
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > pessoa com nome ou data diferente nao e parecida wi…  Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:103
+     99▕     ): void {
+    100▕         // Arrange: os dados vêm do provedor.
+    101▕ 
+    102▕         // Act
+  ➜ 103▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $outraDataNascimento);
+    104▕ 
+    105▕         // Assert
+    106▕         $this->assertFalse($parecida);
+    107▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:103
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > data de nascimento vazia nunca torna a pessoa parec…  Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:128
+    124▕         // Arrange
+    125▕         $nome = 'João da Silva';
+    126▕ 
+    127▕         // Act
+  ➜ 128▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $nome, $outraDataNascimento);
+    129▕ 
+    130▕         // Assert
+    131▕         $this->assertFalse($parecida);
+    132▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:128
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > data de nascimento vazia nunca torna a pessoa parec…  Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:128
+    124▕         // Arrange
+    125▕         $nome = 'João da Silva';
+    126▕ 
+    127▕         // Act
+  ➜ 128▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $nome, $outraDataNascimento);
+    129▕ 
+    130▕         // Assert
+    131▕         $this->assertFalse($parecida);
+    132▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:128
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > data de nascimento vazia nunca torna a pessoa parec…  Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:128
+    124▕         // Arrange
+    125▕         $nome = 'João da Silva';
+    126▕ 
+    127▕         // Act
+  ➜ 128▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $nome, $outraDataNascimento);
+    129▕ 
+    130▕         // Assert
+    131▕         $this->assertFalse($parecida);
+    132▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:128
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > data de nascimento vazia nunca torna a pessoa parec…  Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:128
+    124▕         // Arrange
+    125▕         $nome = 'João da Silva';
+    126▕ 
+    127▕         // Act
+  ➜ 128▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $nome, $outraDataNascimento);
+    129▕ 
+    130▕         // Assert
+    131▕         $this->assertFalse($parecida);
+    132▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:128
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > data de nascimento vazia nunca torna a pessoa parec…  Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:128
+    124▕         // Arrange
+    125▕         $nome = 'João da Silva';
+    126▕ 
+    127▕         // Act
+  ➜ 128▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $nome, $outraDataNascimento);
+    129▕ 
+    130▕         // Assert
+    131▕         $this->assertFalse($parecida);
+    132▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:128
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > nome vazio nunca torna a pessoa parecida with data…   Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:152
+    148▕         // Arrange
+    149▕         $dataNascimento = '2015-03-10';
+    150▕ 
+    151▕         // Act
+  ➜ 152▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $dataNascimento);
+    153▕ 
+    154▕         // Assert
+    155▕         $this->assertFalse($parecida);
+    156▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:152
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > nome vazio nunca torna a pessoa parecida with data…   Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:152
+    148▕         // Arrange
+    149▕         $dataNascimento = '2015-03-10';
+    150▕ 
+    151▕         // Act
+  ➜ 152▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $dataNascimento);
+    153▕ 
+    154▕         // Assert
+    155▕         $this->assertFalse($parecida);
+    156▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:152
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > nome vazio nunca torna a pessoa parecida with data…   Error   
+  Call to undefined method App\Services\SimilarPersonService::isSimilar()
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:152
+    148▕         // Arrange
+    149▕         $dataNascimento = '2015-03-10';
+    150▕ 
+    151▕         // Act
+  ➜ 152▕         $parecida = $this->service->isSimilar($nome, $dataNascimento, $outroNome, $dataNascimento);
+    153▕ 
+    154▕         // Assert
+    155▕         $this->assertFalse($parecida);
+    156▕     }
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:152
+
+
+  Tests:    16 failed, 12 passed (12 assertions)
+  Duration: 1.36s
+
+
+exit code: 2
