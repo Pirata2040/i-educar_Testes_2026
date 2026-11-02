@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1793657671">
+  <project timestamp="1793657671" name="Clover Coverage">
+    <package name="App\Services">
+      <file name="/var/www/ieducar/app/Services/SimilarPersonService.php">
+        <class name="App\Services\SimilarPersonService" namespace="App\Services">
+          <metrics complexity="10" methods="3" coveredmethods="2" conditionals="23" coveredconditionals="21" statements="11" coveredstatements="11" elements="37" coveredelements="34"/>
+        </class>
+        <line num="16" type="method" name="normalizeName" visibility="public" complexity="1" crap="1.42" count="28"/>
+        <line num="18" type="stmt" count="28"/>
+        <line num="19" type="stmt" count="28"/>
+        <line num="20" type="stmt" count="28"/>
+        <line num="22" type="stmt" count="28"/>
+        <line num="32" type="method" name="isSimilar" visibility="public" complexity="4" crap="4.59" count="16"/>
+        <line num="34" type="stmt" count="16"/>
+        <line num="36" type="stmt" count="16"/>
+        <line num="37" type="stmt" count="7"/>
+        <line num="40" type="stmt" count="9"/>
+        <line num="50" type="method" name="shouldWarn" visibility="public" complexity="5" crap="9.96" count="8"/>
+        <line num="57" type="stmt" count="8"/>
+        <line num="58" type="stmt" count="5"/>
+        <line num="61" type="stmt" count="3"/>
+        <metrics loc="64" ncloc="43" classes="1" methods="3" coveredmethods="2" conditionals="23" coveredconditionals="21" statements="11" coveredstatements="11" elements="37" coveredelements="34"/>
+      </file>
+    </package>
+    <metrics files="1" loc="64" ncloc="43" classes="1" methods="3" coveredmethods="2" conditionals="23" coveredconditionals="21" statements="11" coveredstatements="11" elements="37" coveredelements="34"/>
+  </project>
+</coverage>
