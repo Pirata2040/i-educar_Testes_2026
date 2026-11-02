@@ -163,4 +163,127 @@ class SimilarPersonServiceTest extends TestCase
             'os dois nomes nulos' => [null, null],
         ];
     }
+
+    /*
+     * Ciclo 3 - shouldWarn()
+     * Regra (issue #1233): na inclusão, com data de nascimento preenchida, mostrar as pessoas
+     * parecidas e não gravar até o usuário confirmar "não é nenhuma destas". Na edição, a lista
+     * só aparece se o nome ou a data de nascimento passarem a coincidir com outra pessoa.
+     * Técnica: particionamento de equivalência pelos cenários da issue. Os casos também foram
+     * escolhidos para cobrir MC/DC da decisão (cada condição muda o resultado sozinha).
+     */
+
+    public function test_inclusao_com_pessoas_parecidas_exibe_o_aviso(): void
+    {
+        // Act
+        $avisa = $this->service->shouldWarn(
+            isNew: true,
+            birthDate: '2015-03-10',
+            hasSimilarPeople: true,
+            confirmedNotSimilar: false,
+            nameOrBirthDateChanged: false,
+        );
+
+        // Assert
+        $this->assertTrue($avisa);
+    }
+
+    public function test_inclusao_sem_pessoas_parecidas_nao_exibe_o_aviso(): void
+    {
+        // Act
+        $avisa = $this->service->shouldWarn(
+            isNew: true,
+            birthDate: '2015-03-10',
+            hasSimilarPeople: false,
+            confirmedNotSimilar: false,
+            nameOrBirthDateChanged: false,
+        );
+
+        // Assert
+        $this->assertFalse($avisa);
+    }
+
+    public function test_inclusao_confirmada_como_pessoa_nova_nao_exibe_o_aviso(): void
+    {
+        // Act
+        $avisa = $this->service->shouldWarn(
+            isNew: true,
+            birthDate: '2015-03-10',
+            hasSimilarPeople: true,
+            confirmedNotSimilar: true,
+            nameOrBirthDateChanged: false,
+        );
+
+        // Assert
+        $this->assertFalse($avisa);
+    }
+
+    #[DataProvider('datasDeNascimentoNaoInformadas')]
+    public function test_inclusao_sem_data_de_nascimento_nao_exibe_o_aviso(?string $dataNascimento): void
+    {
+        // Act
+        $avisa = $this->service->shouldWarn(
+            isNew: true,
+            birthDate: $dataNascimento,
+            hasSimilarPeople: true,
+            confirmedNotSimilar: false,
+            nameOrBirthDateChanged: false,
+        );
+
+        // Assert
+        $this->assertFalse($avisa);
+    }
+
+    public static function datasDeNascimentoNaoInformadas(): array
+    {
+        return [
+            'data vazia' => [''],
+            'data nula' => [null],
+        ];
+    }
+
+    public function test_edicao_sem_mudar_nome_nem_data_nao_exibe_o_aviso(): void
+    {
+        // Act
+        $avisa = $this->service->shouldWarn(
+            isNew: false,
+            birthDate: '2015-03-10',
+            hasSimilarPeople: true,
+            confirmedNotSimilar: false,
+            nameOrBirthDateChanged: false,
+        );
+
+        // Assert
+        $this->assertFalse($avisa);
+    }
+
+    public function test_edicao_que_passa_a_coincidir_com_outra_pessoa_exibe_o_aviso(): void
+    {
+        // Act
+        $avisa = $this->service->shouldWarn(
+            isNew: false,
+            birthDate: '2015-03-10',
+            hasSimilarPeople: true,
+            confirmedNotSimilar: false,
+            nameOrBirthDateChanged: true,
+        );
+
+        // Assert
+        $this->assertTrue($avisa);
+    }
+
+    public function test_edicao_que_passa_a_coincidir_mas_foi_confirmada_nao_exibe_o_aviso(): void
+    {
+        // Act
+        $avisa = $this->service->shouldWarn(
+            isNew: false,
+            birthDate: '2015-03-10',
+            hasSimilarPeople: true,
+            confirmedNotSimilar: true,
+            nameOrBirthDateChanged: true,
+        );
+
+        // Assert
+        $this->assertFalse($avisa);
+    }
 }
