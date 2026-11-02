@@ -4,10 +4,21 @@ namespace App\Services;
 
 use Illuminate\Support\Str;
 
+/**
+ * Identifica pessoas físicas parecidas antes de gravar um novo cadastro (issue #1233).
+ */
 class SimilarPersonService
 {
+    /**
+     * Deixa o nome em uma forma comparável: sem acento, em minúsculas e com um único espaço entre as palavras.
+     * Serve só para comparar; o nome gravado não é alterado.
+     */
     public function normalizeName(?string $name): string
     {
-        return trim(preg_replace('/\s+/', ' ', strtolower(Str::ascii($name ?? ''))));
+        $withoutAccents = Str::ascii($name ?? '');
+        $lowercase = strtolower($withoutAccents);
+        $singleSpaced = preg_replace('/\s+/', ' ', $lowercase);
+
+        return trim($singleSpaced);
     }
 }

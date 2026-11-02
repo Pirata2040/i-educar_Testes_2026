@@ -28,9 +28,15 @@ class SimilarPersonServiceTest extends TestCase
      */
 
     #[DataProvider('nomesParaNormalizar')]
-    public function test_normaliza_o_nome_para_comparacao(?string $nome, string $esperado): void
+    public function test_nome_fica_sem_acento_maiusculas_ou_espacos_extras(?string $nome, string $esperado): void
     {
-        $this->assertSame($esperado, $this->service->normalizeName($nome));
+        // Arrange: o serviço é criado no setUp() e o nome vem do provedor de dados.
+
+        // Act
+        $normalizado = $this->service->normalizeName($nome);
+
+        // Assert
+        $this->assertSame($esperado, $normalizado);
     }
 
     public static function nomesParaNormalizar(): array

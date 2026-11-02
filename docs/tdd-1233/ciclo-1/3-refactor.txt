@@ -1,0 +1,37 @@
+$ vendor/bin/pest tests/Unit/Services/SimilarPersonServiceTest.php tests/Unit/Services/RemoveHtmlTagsServiceTest.php tests/Unit/RelocationDateServiceTest.php
+# 2026-11-02 16:22:28 | branch tdd-issue-1233 | commit 0f91ec227
+
+
+   PASS  Tests\Unit\Services\SimilarPersonServiceTest
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "já normalizado"                             0.01s  
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "maiúsculas"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "maiúsculas e minúsculas misturadas"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "acentos agudo, til e circunflexo"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "acentos em maiúsculas"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "trema e grave"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "espaços nas pontas"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "espaços repetidos no meio"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "tabulação e quebra de linha"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "texto vazio"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "só espaços"
+  ✓ nome fica sem acento maiusculas ou espacos extras with data set "nulo"
+
+   PASS  Tests\Unit\Services\RemoveHtmlTagsServiceTest
+  ✓ remove html tag with data set #0                                                                             0.27s  
+  ✓ remove html tag with data set #1                                                                             0.03s  
+  ✓ remove html tag with data set #2                                                                             0.03s  
+  ✓ remove html tag with data set #3                                                                             0.02s  
+  ✓ remove html tag with data set #4                                                                             0.02s  
+  ✓ remove html tag with data set #5                                                                             0.03s  
+
+   PASS  Tests\Unit\RelocationDateServiceTest
+  ✓ relocation date when null                                                                                    0.01s  
+  ✓ relocation date when defined
+  ✓ relocation date when defined with different years
+  ✓ relocation date when defined with leap year
+
+  Tests:    22 passed (22 assertions)
+  Duration: 0.74s
+
+
+exit code: 0
