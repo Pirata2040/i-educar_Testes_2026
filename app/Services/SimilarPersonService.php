@@ -40,6 +40,13 @@ class SimilarPersonService
         return $birthDate === $otherBirthDate && $normalizedName === $this->normalizeName($otherName);
     }
 
+    /**
+     * Decide se o cadastro deve parar para mostrar as pessoas parecidas antes de gravar.
+     *
+     * Não avisa quando não há data de nascimento, quando ninguém parecido foi encontrado ou quando o
+     * usuário já confirmou que não é nenhuma delas. Fora isso, avisa sempre na inclusão e, na edição,
+     * só se o nome ou a data de nascimento mudaram.
+     */
     public function shouldWarn(
         bool $isNew,
         ?string $birthDate,
@@ -47,6 +54,10 @@ class SimilarPersonService
         bool $confirmedNotSimilar,
         bool $nameOrBirthDateChanged
     ): bool {
-        return !empty($birthDate) && $hasSimilarPeople && !$confirmedNotSimilar && ($isNew || $nameOrBirthDateChanged);
+        if (empty($birthDate) || !$hasSimilarPeople || $confirmedNotSimilar) {
+            return false;
+        }
+
+        return $isNew || $nameOrBirthDateChanged;
     }
 }
