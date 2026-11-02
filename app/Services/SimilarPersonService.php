@@ -39,4 +39,14 @@ class SimilarPersonService
 
         return $birthDate === $otherBirthDate && $normalizedName === $this->normalizeName($otherName);
     }
+
+    public function shouldWarn(
+        bool $isNew,
+        ?string $birthDate,
+        bool $hasSimilarPeople,
+        bool $confirmedNotSimilar,
+        bool $nameOrBirthDateChanged
+    ): bool {
+        return !empty($birthDate) && $hasSimilarPeople && !$confirmedNotSimilar && ($isNew || $nameOrBirthDateChanged);
+    }
 }
