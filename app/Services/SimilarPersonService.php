@@ -22,16 +22,21 @@ class SimilarPersonService
         return trim($singleSpaced);
     }
 
+    /**
+     * Duas pessoas são parecidas quando nasceram no mesmo dia e têm o mesmo nome normalizado.
+     * Sem data de nascimento ou sem nome não há como comparar, então nunca são parecidas.
+     *
+     * @param string|null $birthDate      data no formato Y-m-d
+     * @param string|null $otherBirthDate data no formato Y-m-d
+     */
     public function isSimilar(?string $name, ?string $birthDate, ?string $otherName, ?string $otherBirthDate): bool
     {
-        if (empty($birthDate) || empty($otherBirthDate)) {
+        $normalizedName = $this->normalizeName($name);
+
+        if (empty($birthDate) || $normalizedName === '') {
             return false;
         }
 
-        if ($this->normalizeName($name) === '') {
-            return false;
-        }
-
-        return $birthDate === $otherBirthDate && $this->normalizeName($name) === $this->normalizeName($otherName);
+        return $birthDate === $otherBirthDate && $normalizedName === $this->normalizeName($otherName);
     }
 }
