@@ -21,4 +21,17 @@ class SimilarPersonService
 
         return trim($singleSpaced);
     }
+
+    public function isSimilar(?string $name, ?string $birthDate, ?string $otherName, ?string $otherBirthDate): bool
+    {
+        if (empty($birthDate) || empty($otherBirthDate)) {
+            return false;
+        }
+
+        if ($this->normalizeName($name) === '') {
+            return false;
+        }
+
+        return $birthDate === $otherBirthDate && $this->normalizeName($name) === $this->normalizeName($otherName);
+    }
 }
