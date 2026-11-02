@@ -1,0 +1,227 @@
+$ vendor/bin/pest tests/Unit/Services/SimilarPersonServiceTest.php
+# 2026-11-02 15:50:51 | branch tdd-issue-1233 | commit 8fdad7f84
+
+
+   FAIL  Tests\Unit\Services\SimilarPersonServiceTest
+  ⨯ normaliza o nome para comparacao with data set "já normalizado"
+  ⨯ normaliza o nome para comparacao with data set "maiúsculas"
+  ⨯ normaliza o nome para comparacao with data set "maiúsculas e minúsculas misturadas"
+  ⨯ normaliza o nome para comparacao with data set "acentos agudo, til e circunflexo"
+  ⨯ normaliza o nome para comparacao with data set "acentos em maiúsculas"
+  ⨯ normaliza o nome para comparacao with data set "trema e grave"
+  ⨯ normaliza o nome para comparacao with data set "espaços nas pontas"
+  ⨯ normaliza o nome para comparacao with data set "espaços repetidos no meio"
+  ⨯ normaliza o nome para comparacao with data set "tabulação e quebra de linha"
+  ⨯ normaliza o nome para comparacao with data set "texto vazio"
+  ⨯ normaliza o nome para comparacao with data set "só espaços"
+  ⨯ normaliza o nome para comparacao with data set "nulo"
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > normaliza o nome para comparacao with data set "já…   Error   
+  Class "App\Services\SimilarPersonService" not found
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:21
+     17▕     private SimilarPersonService $service;
+     18▕ 
+     19▕     protected function setUp(): void
+     20▕     {
+  ➜  21▕         $this->service = new SimilarPersonService;
+     22▕     }
+     23▕ 
+     24▕     /*
+     25▕      * Ciclo 1 - normalizeName()
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:21
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > normaliza o nome para comparacao with data set "mai…  Error   
+  Class "App\Services\SimilarPersonService" not found
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:21
+     17▕     private SimilarPersonService $service;
+     18▕ 
+     19▕     protected function setUp(): void
+     20▕     {
+  ➜  21▕         $this->service = new SimilarPersonService;
+     22▕     }
+     23▕ 
+     24▕     /*
+     25▕      * Ciclo 1 - normalizeName()
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:21
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > normaliza o nome para comparacao with data set "mai…  Error   
+  Class "App\Services\SimilarPersonService" not found
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:21
+     17▕     private SimilarPersonService $service;
+     18▕ 
+     19▕     protected function setUp(): void
+     20▕     {
+  ➜  21▕         $this->service = new SimilarPersonService;
+     22▕     }
+     23▕ 
+     24▕     /*
+     25▕      * Ciclo 1 - normalizeName()
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:21
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > normaliza o nome para comparacao with data set "ace…  Error   
+  Class "App\Services\SimilarPersonService" not found
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:21
+     17▕     private SimilarPersonService $service;
+     18▕ 
+     19▕     protected function setUp(): void
+     20▕     {
+  ➜  21▕         $this->service = new SimilarPersonService;
+     22▕     }
+     23▕ 
+     24▕     /*
+     25▕      * Ciclo 1 - normalizeName()
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:21
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > normaliza o nome para comparacao with data set "ace…  Error   
+  Class "App\Services\SimilarPersonService" not found
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:21
+     17▕     private SimilarPersonService $service;
+     18▕ 
+     19▕     protected function setUp(): void
+     20▕     {
+  ➜  21▕         $this->service = new SimilarPersonService;
+     22▕     }
+     23▕ 
+     24▕     /*
+     25▕      * Ciclo 1 - normalizeName()
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:21
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > normaliza o nome para comparacao with data set "tre…  Error   
+  Class "App\Services\SimilarPersonService" not found
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:21
+     17▕     private SimilarPersonService $service;
+     18▕ 
+     19▕     protected function setUp(): void
+     20▕     {
+  ➜  21▕         $this->service = new SimilarPersonService;
+     22▕     }
+     23▕ 
+     24▕     /*
+     25▕      * Ciclo 1 - normalizeName()
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:21
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > normaliza o nome para comparacao with data set "esp…  Error   
+  Class "App\Services\SimilarPersonService" not found
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:21
+     17▕     private SimilarPersonService $service;
+     18▕ 
+     19▕     protected function setUp(): void
+     20▕     {
+  ➜  21▕         $this->service = new SimilarPersonService;
+     22▕     }
+     23▕ 
+     24▕     /*
+     25▕      * Ciclo 1 - normalizeName()
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:21
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > normaliza o nome para comparacao with data set "esp…  Error   
+  Class "App\Services\SimilarPersonService" not found
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:21
+     17▕     private SimilarPersonService $service;
+     18▕ 
+     19▕     protected function setUp(): void
+     20▕     {
+  ➜  21▕         $this->service = new SimilarPersonService;
+     22▕     }
+     23▕ 
+     24▕     /*
+     25▕      * Ciclo 1 - normalizeName()
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:21
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > normaliza o nome para comparacao with data set "tab…  Error   
+  Class "App\Services\SimilarPersonService" not found
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:21
+     17▕     private SimilarPersonService $service;
+     18▕ 
+     19▕     protected function setUp(): void
+     20▕     {
+  ➜  21▕         $this->service = new SimilarPersonService;
+     22▕     }
+     23▕ 
+     24▕     /*
+     25▕      * Ciclo 1 - normalizeName()
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:21
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > normaliza o nome para comparacao with data set "tex…  Error   
+  Class "App\Services\SimilarPersonService" not found
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:21
+     17▕     private SimilarPersonService $service;
+     18▕ 
+     19▕     protected function setUp(): void
+     20▕     {
+  ➜  21▕         $this->service = new SimilarPersonService;
+     22▕     }
+     23▕ 
+     24▕     /*
+     25▕      * Ciclo 1 - normalizeName()
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:21
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > normaliza o nome para comparacao with data set "só…   Error   
+  Class "App\Services\SimilarPersonService" not found
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:21
+     17▕     private SimilarPersonService $service;
+     18▕ 
+     19▕     protected function setUp(): void
+     20▕     {
+  ➜  21▕         $this->service = new SimilarPersonService;
+     22▕     }
+     23▕ 
+     24▕     /*
+     25▕      * Ciclo 1 - normalizeName()
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:21
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Tests\Unit\Services\SimilarPersonServiceTest > normaliza o nome para comparacao with data set "nul…  Error   
+  Class "App\Services\SimilarPersonService" not found
+
+  at tests\Unit\Services\SimilarPersonServiceTest.php:21
+     17▕     private SimilarPersonService $service;
+     18▕ 
+     19▕     protected function setUp(): void
+     20▕     {
+  ➜  21▕         $this->service = new SimilarPersonService;
+     22▕     }
+     23▕ 
+     24▕     /*
+     25▕      * Ciclo 1 - normalizeName()
+
+  1   tests\Unit\Services\SimilarPersonServiceTest.php:21
+
+
+  Tests:    12 failed (0 assertions)
+  Duration: 0.29s
+
+
+exit code: 2
