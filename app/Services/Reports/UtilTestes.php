@@ -23,6 +23,12 @@ class Util
 
         return sprintf('%02d:%02d', $hours, $minutes);
     }
+    public function testEntradaNaoNumericaLancaTypeError(): void
+{
+    // CT-PE-07: classe inválida CE7
+    $this->expectException(\TypeError::class);
+    Util::formatWorkload('abc');
+}
 
     public static function formatWorkload(?float $workload): string
     {
