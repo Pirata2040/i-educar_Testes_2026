@@ -14,14 +14,43 @@ jobs:
         with:
           php-version: '8.4'
           extensions: mbstring, xml, curl, zip
-          coverage: pcov
+          coverage: xdebug
           tools: composer:v2
 
       - name: Instalar dependências
         run: composer install --ignore-platform-reqs --no-scripts --no-interaction
 
+      - name: Testes existentes (5.1.1)
+        run: grep -rn "formatWorkload" tests/ --exclude=UtilTest.php || echo "Nenhum teste existente para formatWorkload"
+
+      - name: Onde a função é usada (5.1)
+        run: grep -rn "formatWorkload" app/ resources/ routes/ || true
+
+      - name: Cobertura ANTES (5.1.5)
+        run: |
+          mkdir -p /tmp/vazio
+          cat > /tmp/vazio/VazioTest.php <<'EOF'
+          <?php
+          use PHPUnit\Framework\TestCase;
+          class VazioTest extends TestCase
+          {
+              public function testVazio(): void
+              {
+                  $this->assertTrue(true);
+              }
+          }
+          EOF
+          vendor/bin/phpunit /tmp/vazio/VazioTest.php --coverage-text --coverage-filter=app/Services/Reports/Util.php || true
+
       - name: Rodar testes (5.1.4)
         run: vendor/bin/phpunit tests/Unit/Services/Reports/UtilTest.php --testdox
 
-      - name: Cobertura (5.1.5)
-        run: vendor/bin/phpunit tests/Unit/Services/Reports/UtilTest.php --coverage-text --coverage-filter=app/Services/Reports/Util.php
+      - name: Cobertura DEPOIS (5.1.5)
+        run: vendor/bin/phpunit tests/Unit/Services/Reports/UtilTest.php --coverage-text --coverage-html cobertura-html --path-coverage --coverage-filter=app/Services/Reports/Util.php
+
+      - name: Guardar relatório HTML
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cobertura-html
+          path: cobertura-html
