@@ -17,7 +17,6 @@ function callIsPoliOrInstitutionalUser(MessageService $svc, int $userId): bool
 {
     $ref = new ReflectionClass($svc);
     $method = $ref->getMethod('isPoliOrInstitutionalUser');
-    $method->setAccessible(true);
 
     return $method->invokeArgs($svc, [$userId]);
 }
