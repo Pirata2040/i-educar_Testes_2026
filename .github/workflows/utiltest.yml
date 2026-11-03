@@ -1,0 +1,27 @@
+name: UtilTest
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  testes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, xml, curl, zip
+          coverage: pcov
+          tools: composer:v2
+
+      - name: Instalar dependências
+        run: composer install --ignore-platform-reqs --no-scripts --no-interaction
+
+      - name: Rodar testes (5.1.4)
+        run: vendor/bin/phpunit tests/Unit/Services/Reports/UtilTest.php --testdox
+
+      - name: Cobertura (5.1.5)
+        run: vendor/bin/phpunit tests/Unit/Services/Reports/UtilTest.php --coverage-text --coverage-filter=app/Services/Reports/Util.php
