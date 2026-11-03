@@ -1,0 +1,48 @@
+
+   PASS  Tests\Unit\Services\AgendaServiceFormatDateTDDTest
+  ✓ converte data banco para exibicao                                   32.09s  
+  ✓ entrada null retorna null                                            3.59s  
+  ✓ formato invalido retorna null                                        1.03s  
+
+   PASS  Tests\Unit\Services\AgendaServiceParseDateTest
+  ✓ data valida tipica                                                   1.49s  
+  ✓ data valida limite inferior ano                                      1.04s  
+  ✓ data valida 29 fevereiro ano bissexto                                0.90s  
+  ✓ entrada null retorna null                                            1.09s  
+  ✓ sem barra separadora retorna null                                    1.19s  
+  ✓ barras em excesso retorna null                                       1.14s  
+  ✓ ano com dois digitos retorna null                                    1.12s  
+  ✓ ano com cinco digitos retorna null                                   1.01s  
+  ✓ dia inexistente no mes retorna null                                  0.92s  
+  ✓ 29 fevereiro ano nao bissexto retorna null                           1.01s  
+  ✓ mcdc condicao a verdadeiro sem barra                                 1.08s  
+  ✓ mcdc condicao b verdadeiro ano dois digitos                          1.03s  
+  ✓ mcdc condicao c verdadeiro data inexistente                          1.03s  
+  ✓ mcdc todas condicoes falsas retorna data formatada                   1.10s  
+
+   PASS  Tests\Unit\Services\AgendaServiceTest
+  ✓ o nome da agenda usa o primeiro e o último nome da pessoa            6.53s  
+  ✓ sem agenda não há permissão e o editor zero sempre pode              1.97s  
+  ✓ não mexe em compromisso de outra agenda nem em compromisso inexiste… 1.61s  
+  ✓ a edição devolve o erro de validação sem alterar o compromisso       1.55s  
+  ✓ data inválida não tem compromissos no dia                            2.24s  
+
+   DEPR  Tests\Request\Intranet\AgendaPreferenciasTest
+  ! abre e grava as preferências da agenda → Creation of dynamic prope… 14.10s  
+
+   DEPR  Tests\Request\Intranet\AgendaResponsavelTest
+  ✓ pesquisa responsáveis pela agenda                                    4.40s  
+  ! lista as agendas do usuário e as que ele responde, filtrando pelo…  21.02s  
+
+   DEPR  Tests\Request\Intranet\AgendaTest
+  ✓ abre a agenda do usuário em uma data                                 7.48s  
+  ✓ grava um compromisso na agenda                                       7.14s  
+  ! avisa o que falta ao gravar um compromisso → Creation of dynamic p… 34.96s  
+  ! repete o compromisso pelos dias pedidos e o mostra no dia, com os…  33.34s  
+  ! uma anotação do dia vira compromisso ao receber a hora de fim → Cr… 34.40s  
+  ! a agenda de outra pessoa só abre para o responsável → Creation of…  38.42s  
+
+  Tests:    6 deprecated, 25 passed (77 assertions)
+  Duration: 284.68s
+
+exit 0

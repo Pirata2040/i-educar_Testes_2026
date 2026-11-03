@@ -1,0 +1,45 @@
+$ docker compose exec php vendor/bin/pest tests/Unit/Services/AgendaServiceIsValidTimeTest.php
+# 2026-11-02 21:54:57 | branch testes-unidade-isvalidtime | commit 4fca308f5 + teste novo
+
+
+   PASS  Tests\Unit\Services\AgendaServiceIsValidTimeTest
+  ✓ horario de classe valida e aceito with data set "[ v1] hora de 00 a… 0.37s  
+  ✓ horario de classe valida e aceito with data set "[ v2] hora de 20 a 23"
+  ✓ horario de classe invalida e recusado with data set "[ i1] nulo"     0.03s  
+  ✓ horario de classe invalida e recusado with data set "[ i2] texto vazio"
+  ✓ horario de classe invalida e recusado with data set "[ i3] sem separador"
+  ✓ horario de classe invalida e recusado with data set "[ i4] separador h"
+  ✓ horario de classe invalida e recusado with data set "[ i4] separador ponto"
+  ✓ horario de classe invalida e recusado with data set "[ i5] hora com um dígito"
+  ✓ horario de classe invalida e recusado with data set "[ i6] minuto com um dígito"
+  ✓ horario de classe invalida e recusado with data set "[ i7] com segundos"
+  ✓ horario de classe invalida e recusado with data set "[ i8] letras no lugar dos números"
+  ✓ horario de classe invalida e recusado with data set "[ i9] espaço antes"
+  ✓ horario de classe invalida e recusado with data set "[ i9] espaço depois"
+  ✓ horario de classe invalida e recusado with data set "[ i10] hora negativa"
+  ✓ horario de classe invalida e recusado with data set "[ i11] hora acima de 23"
+  ✓ horario de classe invalida e recusado with data set "[ i12] minuto acima de 59"
+  ✓ horario nos limites do intervalo with data set "[ l1] primeiro horá… 0.02s  
+  ✓ horario nos limites do intervalo with data set "[ l2] último horário do dia"
+  ✓ horario nos limites do intervalo with data set "[ l3] hora logo acima do limite"
+  ✓ horario nos limites do intervalo with data set "[ l4] minuto logo acima do limite"
+  ✓ horario nos limites do intervalo with data set "[ l5] último minuto da primeira hora"
+  ✓ horario nos limites do intervalo with data set "[ l6] minuto 60 na primeira hora"
+  ✓ horario nos limites do intervalo with data set "[ l7] última hora da faixa 00-19"
+  ✓ horario nos limites do intervalo with data set "[ l8] primeira hora da faixa 20-23"
+  ✓ cada condicao da expressao muda o resultado sozinha with data set "[ b1] a: 1º dígito da hora 0 ou 1"
+  ✓ cada condicao da expressao muda o resultado sozinha with data set "[ b2] b: 2º dígito da hora numérico"
+  ✓ cada condicao da expressao muda o resultado sozinha with data set "[ b3] c: 1º dígito da hora 2"
+  ✓ cada condicao da expressao muda o resultado sozinha with data set "[ b4] d: 2º dígito da hora 0-3"
+  ✓ cada condicao da expressao muda o resultado sozinha with data set "[ b5] e: separador dois-pontos"
+  ✓ cada condicao da expressao muda o resultado sozinha with data set "[ b6] f: 1º dígito do minuto 0-5"
+  ✓ cada condicao da expressao muda o resultado sozinha with data set "[ b7] g: 2º dígito do minuto numérico"
+  ✓ cada condicao da expressao muda o resultado sozinha with data set "[ b8] h: nada depois dos minutos"
+  ✓ cada condicao da expressao muda o resultado sozinha with data set "[ b9] início: nada antes da hora"
+  ✓ defeito aceita horario com quebra de linha no final
+  ✓ horario com duas quebras de linha no final e recusado
+
+  Tests:    35 passed (44 assertions)
+  Duration: 13.90s
+
+exit code: 0
