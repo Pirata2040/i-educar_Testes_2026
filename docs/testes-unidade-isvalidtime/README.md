@@ -39,8 +39,10 @@ como o `AgendaServiceParseDateTest`.
 | Antes (25 testes da agenda) | 1/1 (100%) | 3/4 (75%) | 1/2 (50%) |
 | Depois (+35 casos) | 1/1 (100%) | 3/4 (75%) | 1/2 (50%) |
 
-A cobertura estrutural não muda. Os testes existentes só usam horários válidos e já executam a única linha
-do método. A branch que falta é o desvio `JMP_FRAMELESS` que o PHP 8.4+ gera para procurar uma função
+A cobertura estrutural não muda. Nenhum teste existente chama o método diretamente: ele é exercitado pela
+tela da agenda (`AgendaTest`) e pelo `AgendaServiceTest`, com horários válidos (08:00 a 15:00) e três
+inválidos (`'25:00'`, `'x'` e `''`). Isso já executa a única linha do método, mas não testa os limites
+(00:00, 23:59, 24:00, 23:60), minutos acima de 59, variações de formato nem o nulo. A branch que falta é o desvio `JMP_FRAMELESS` que o PHP 8.4+ gera para procurar uma função
 `App\Services\preg_match` antes de usar a nativa, e que nunca é tomado. Toda a lógica de validação está
 dentro da expressão regular, que a cobertura do Xdebug não enxerga. Por isso o MC/DC foi aplicado às
 condições da expressão.
