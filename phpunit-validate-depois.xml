@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Cobertura do AgendaService depois dos testes de validate(). Só mede app/Services/AgendaService.php.
+  O comando para gerar o relatório está em docs/testes-unidade-isvalidtime/README.md.
+-->
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/12.5/phpunit.xsd" bootstrap="./vendor/autoload.php" colors="true" backupGlobals="true" cacheDirectory="./.phpunit.cache">
+  <testsuites>
+    <testsuite name="Agenda">
+      <directory prefix="AgendaService" suffix="Test.php">./tests/Unit/Services</directory>
+      <directory prefix="Agenda" suffix="Test.php">./tests/Request/Intranet</directory>
+      <exclude>./tests/Unit/Services/AgendaServiceIsValidTimeTest.php</exclude>
+    </testsuite>
+  </testsuites>
+  <php>
+    <ini name="memory_limit" value="2G"/>
+    <server name="API_ACCESS_KEY" value="ieducar-access-key"/>
+    <server name="API_SECRET_KEY" value="ieducar-secret-key"/>
+    <server name="APP_DEFAULT_HOST" value="localhost"/>
+    <server name="APP_ENV" value="testing"/>
+    <server name="BCRYPT_ROUNDS" value="4"/>
+    <server name="CACHE_STORE" value="array"/>
+    <server name="DB_DATABASE" value="testing"/>
+    <server name="LEGACY_SEED_DATA" value="false"/>
+    <server name="MAIL_MAILER" value="array"/>
+    <server name="QUEUE_CONNECTION" value="sync"/>
+    <server name="SESSION_DRIVER" value="array"/>
+    <server name="TELESCOPE_ENABLED" value="false"/>
+  </php>
+  <source>
+    <include>
+      <file>./app/Services/AgendaService.php</file>
+    </include>
+  </source>
+  <coverage>
+    <report>
+      <html outputDirectory="docs/testes-unidade-isvalidtime/cobertura-validate-depois/html"/>
+      <text outputFile="docs/testes-unidade-isvalidtime/cobertura-validate-depois/cobertura.txt" showUncoveredFiles="true"/>
+    </report>
+  </coverage>
+</phpunit>

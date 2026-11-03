@@ -54,6 +54,53 @@ devolve `true`, e o valor chega a `storeCommitment()`, que o concatena em `data_
 `test_defeito_aceita_horario_com_quebra_de_linha_no_final` registra o comportamento atual, no mesmo padrão
 dos testes "defeito:" do projeto. A correção seria usar `\z` ou o modificador `D` na expressão.
 
+## Segundo método: AgendaService::validate() (começando pela caixa-branca)
+
+- Testes: `tests/Unit/Services/AgendaServiceValidateTest.php` (26 casos, sem banco)
+
+```php
+private function validate(?string $title, ?string $description, ?string $date, ?string $startTime): string
+{
+    if (!$title && !$description) {                 // D1 = C1 && C2
+        return self::ERROR_TITLE_OR_DESCRIPTION;
+    }
+    if ($this->parseDate($date) === null) {          // D2
+        return self::ERROR_DATE;
+    }
+    if (!$this->isValidTime($startTime)) {           // D3
+        return self::ERROR_START_TIME;
+    }
+    return '';
+}
+```
+
+Aqui a ordem foi a inversa: o projeto começou pela estrutura do código e foi complementado com
+caixa-preta.
+
+| Grupo | Técnica | Casos |
+|---|---|---|
+| W1 a W6 | cobertura de decisões e de caminhos (D1, D2 e D3 verdadeiras e falsas) | 6 |
+| M1 a M3 | MC/DC de D1 (C1 = sem título, C2 = sem descrição) | 3 |
+| P1 a P14 | caixa-preta: classes dos campos, limites de data e hora e prioridade das mensagens | 14 |
+| defeito | título ou descrição "0" tratados como vazios | 2 |
+| observação | título só com espaços aceito pelo método | 1 |
+
+| `validate()` | Linhas | Branches | Caminhos |
+|---|---|---|---|
+| Antes (testes existentes) | 7/7 (100%) | 9/9 (100%) | 4/8 (50%) |
+| Depois | 7/7 (100%) | 9/9 (100%) | 7/8 (87,5%) |
+
+Os testes existentes já cobriam todas as linhas e branches, mas não os caminhos em que só a descrição está
+preenchida. O oitavo caminho é inviável: quando há título, o `&&` faz curto-circuito com resultado falso e
+nunca chega ao `return` do erro de título.
+
+Defeito: as condições de D1 usam a negação do PHP, que trata o texto `"0"` como falso. Um compromisso com
+título `"0"` e sem descrição é recusado como se não tivesse título. A observação do título só com espaços
+não é defeito na tela: ela lê os campos por `request()`, que passa pelo middleware `TrimStrings`.
+
+Cobertura em `cobertura-validate-antes/` e `cobertura-validate-depois/`, gerada com
+`phpunit-validate-antes.xml` e `phpunit-validate-depois.xml`.
+
 ## Como executar
 
 Só os testes do método (não precisam de banco):

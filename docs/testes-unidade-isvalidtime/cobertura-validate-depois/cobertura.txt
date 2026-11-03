@@ -1,0 +1,14 @@
+
+
+Code Coverage Report:
+  2026-11-02 22:44:39
+
+ Summary:
+  Classes:    0.00% (0/1)
+  Methods:   90.47% (19/21)
+  Paths:     13.74% (47/342)
+  Branches:  96.87% (93/96)
+  Lines:    100.00% (148/148)
+
+App\Services\AgendaService
+  Methods:  90.47% (19/21)   Paths:  13.74% ( 47/342)   Branches:  96.87% ( 93/ 96)   Lines: 100.00% (148/148)

@@ -8,6 +8,7 @@
     <testsuite name="Agenda">
       <directory prefix="AgendaService" suffix="Test.php">./tests/Unit/Services</directory>
       <directory prefix="Agenda" suffix="Test.php">./tests/Request/Intranet</directory>
+      <exclude>./tests/Unit/Services/AgendaServiceValidateTest.php</exclude>
     </testsuite>
   </testsuites>
   <php>

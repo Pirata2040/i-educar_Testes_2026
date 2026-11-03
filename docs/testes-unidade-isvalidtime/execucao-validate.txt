@@ -1,0 +1,36 @@
+$ docker compose exec php vendor/bin/pest tests/Unit/Services/AgendaServiceValidateTest.php
+# 2026-11-02 22:47:46 | branch testes-unidade-isvalidtime | commit ada06586f + teste novo
+
+
+   PASS  Tests\Unit\Services\AgendaServiceValidateTest
+  ✓ cada decisao devolve a sua mensagem with data set "[ w1] d1 verdade… 0.11s  
+  ✓ cada decisao devolve a sua mensagem with data set "[ w2] d1 falsa e d2 verdadeira: data inválida"
+  ✓ cada decisao devolve a sua mensagem with data set "[ w3] d2 falsa e d3 verdadeira: hora inválida"
+  ✓ cada decisao devolve a sua mensagem with data set "[ w4] d3 falsa: dados válidos"
+  ✓ cada decisao devolve a sua mensagem with data set "[ w5] só descrição e data inválida"
+  ✓ cada decisao devolve a sua mensagem with data set "[ w6] só descrição e hora inválida"
+  ✓ cada condicao de d1 muda o resultado sozinha with data set "[ m1] c1 e c2 verdadeiras: sem título e sem descrição"
+  ✓ cada condicao de d1 muda o resultado sozinha with data set "[ m2] só c1 falsa: com título e sem descrição"
+  ✓ cada condicao de d1 muda o resultado sozinha with data set "[ m3] só c2 falsa: sem título e com descrição"
+  ✓ titulo e descricao vazios sao recusados with data set "[ p1] os dois nulos"
+  ✓ titulo e descricao vazios sao recusados with data set "[ p2] os dois textos vazios"
+  ✓ titulo e descricao vazios sao recusados with data set "[ p3] título vazio e descrição nula"
+  ✓ compromisso com dados validos nao tem erro with data set "[ p4] título e descrição preenchidos"
+  ✓ compromisso com dados validos nao tem erro with data set "[ p5] limite: 29/02 de ano bissexto"
+  ✓ compromisso com dados validos nao tem erro with data set "[ p6] limite: primeiro horário do dia"
+  ✓ compromisso com dados validos nao tem erro with data set "[ p7] limite: último horário do dia"
+  ✓ data ou hora invalida devolve a mensagem do campo with data set "[ p8] data nula"
+  ✓ data ou hora invalida devolve a mensagem do campo with data set "[ p9] limite: 29/02 de ano não bissexto"
+  ✓ data ou hora invalida devolve a mensagem do campo with data set "[ p10] data no formato do banco"
+  ✓ data ou hora invalida devolve a mensagem do campo with data set "[ p11] hora nula"
+  ✓ data ou hora invalida devolve a mensagem do campo with data set "[ p12] limite: hora 24:00"
+  ✓ com varios campos invalidos devolve o primeiro erro with data set "[ p13] tudo inválido: vale o título"
+  ✓ com varios campos invalidos devolve o primeiro erro with data set "[ p14] data e hora inválidas: vale a data"
+  ✓ defeito titulo 0 e tratado como vazio
+  ✓ defeito descricao 0 e tratada como vazia
+  ✓ titulo so com espacos e aceito pelo metodo
+
+  Tests:    26 passed (26 assertions)
+  Duration: 7.35s
+
+exit code: 0

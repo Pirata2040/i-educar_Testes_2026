@@ -1,0 +1,76 @@
+
+   PASS  Tests\Unit\Services\AgendaServiceFormatDateTDDTest
+  ✓ converte data banco para exibicao                                    6.97s  
+  ✓ entrada null retorna null                                            0.63s  
+  ✓ formato invalido retorna null                                        0.45s  
+
+   PASS  Tests\Unit\Services\AgendaServiceParseDateTest
+  ✓ data valida tipica                                                   0.65s  
+  ✓ data valida limite inferior ano                                      0.46s  
+  ✓ data valida 29 fevereiro ano bissexto                                0.54s  
+  ✓ entrada null retorna null                                            0.50s  
+  ✓ sem barra separadora retorna null                                    0.50s  
+  ✓ barras em excesso retorna null                                       0.55s  
+  ✓ ano com dois digitos retorna null                                    0.52s  
+  ✓ ano com cinco digitos retorna null                                   0.51s  
+  ✓ dia inexistente no mes retorna null                                  0.49s  
+  ✓ 29 fevereiro ano nao bissexto retorna null                           0.61s  
+  ✓ mcdc condicao a verdadeiro sem barra                                 0.51s  
+  ✓ mcdc condicao b verdadeiro ano dois digitos                          0.57s  
+  ✓ mcdc condicao c verdadeiro data inexistente                          0.52s  
+  ✓ mcdc todas condicoes falsas retorna data formatada                   0.57s  
+
+   PASS  Tests\Unit\Services\AgendaServiceTest
+  ✓ o nome da agenda usa o primeiro e o último nome da pessoa            2.30s  
+  ✓ sem agenda não há permissão e o editor zero sempre pode              0.94s  
+  ✓ não mexe em compromisso de outra agenda nem em compromisso inexiste… 1.10s  
+  ✓ a edição devolve o erro de validação sem alterar o compromisso       1.56s  
+  ✓ data inválida não tem compromissos no dia                            1.32s  
+
+   PASS  Tests\Unit\Services\AgendaServiceValidateTest
+  ✓ cada decisao devolve a sua mensagem with data set "[ w1] d1 verdade… 0.28s  
+  ✓ cada decisao devolve a sua mensagem with data set "[ w2] d1 falsa e… 0.13s  
+  ✓ cada decisao devolve a sua mensagem with data set "[ w3] d2 falsa e… 0.13s  
+  ✓ cada decisao devolve a sua mensagem with data set "[ w4] d3 falsa:…  0.14s  
+  ✓ cada decisao devolve a sua mensagem with data set "[ w5] só descriç… 0.15s  
+  ✓ cada decisao devolve a sua mensagem with data set "[ w6] só descriç… 0.14s  
+  ✓ cada condicao de d1 muda o resultado sozinha with data set "[ m1] c… 0.14s  
+  ✓ cada condicao de d1 muda o resultado sozinha with data set "[ m2] s… 0.13s  
+  ✓ cada condicao de d1 muda o resultado sozinha with data set "[ m3] s… 0.12s  
+  ✓ titulo e descricao vazios sao recusados with data set "[ p1] os doi… 0.13s  
+  ✓ titulo e descricao vazios sao recusados with data set "[ p2] os doi… 0.12s  
+  ✓ titulo e descricao vazios sao recusados with data set "[ p3] título… 0.13s  
+  ✓ compromisso com dados validos nao tem erro with data set "[ p4] tít… 0.13s  
+  ✓ compromisso com dados validos nao tem erro with data set "[ p5] lim… 0.13s  
+  ✓ compromisso com dados validos nao tem erro with data set "[ p6] lim… 0.11s  
+  ✓ compromisso com dados validos nao tem erro with data set "[ p7] lim… 0.12s  
+  ✓ data ou hora invalida devolve a mensagem do campo with data set "[…  0.12s  
+  ✓ data ou hora invalida devolve a mensagem do campo with data set "[…  0.11s  
+  ✓ data ou hora invalida devolve a mensagem do campo with data set "[…  0.11s  
+  ✓ data ou hora invalida devolve a mensagem do campo with data set "[…  0.11s  
+  ✓ data ou hora invalida devolve a mensagem do campo with data set "[…  0.11s  
+  ✓ com varios campos invalidos devolve o primeiro erro with data set "… 0.11s  
+  ✓ com varios campos invalidos devolve o primeiro erro with data set "… 0.12s  
+  ✓ defeito titulo 0 e tratado como vazio                                0.11s  
+  ✓ defeito descricao 0 e tratada como vazia                             0.11s  
+  ✓ titulo so com espacos e aceito pelo metodo                           0.12s  
+
+   DEPR  Tests\Request\Intranet\AgendaPreferenciasTest
+  ! abre e grava as preferências da agenda → Creation of dynamic proper… 6.30s  
+
+   DEPR  Tests\Request\Intranet\AgendaResponsavelTest
+  ✓ pesquisa responsáveis pela agenda                                    3.42s  
+  ! lista as agendas do usuário e as que ele responde, filtrando pelo…  12.27s  
+
+   DEPR  Tests\Request\Intranet\AgendaTest
+  ✓ abre a agenda do usuário em uma data                                 5.87s  
+  ✓ grava um compromisso na agenda                                       5.35s  
+  ! avisa o que falta ao gravar um compromisso → Creation of dynamic p… 19.16s  
+  ! repete o compromisso pelos dias pedidos e o mostra no dia, com os…  23.74s  
+  ! uma anotação do dia vira compromisso ao receber a hora de fim → Cr… 26.91s  
+  ! a agenda de outra pessoa só abre para o responsável → Creation of…  30.76s  
+
+  Tests:    6 deprecated, 51 passed (103 assertions)
+  Duration: 167.27s
+
+exit 0
