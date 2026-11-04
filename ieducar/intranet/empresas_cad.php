@@ -139,13 +139,10 @@ return new class extends clsCadastro
     public function Novo()
     {
         if (!$this->validaFormatoUrl(url: $this->url)) {
-            // Inalcançável: `validaFormatoUrl()` nunca devolve falso, porque `filter_var()` recebe o filtro como `options`.
-            // @codeCoverageIgnoreStart
             $this->mensagem = 'O campo Site deve conter uma URL válida (ex: https://www.exemplo.com.br).';
             $this->busca_empresa = true;
 
             return false;
-            // @codeCoverageIgnoreEnd
         }
 
         if (!empty($this->email) && filter_var($this->email, FILTER_VALIDATE_EMAIL) === false) {
@@ -309,7 +306,7 @@ return new class extends clsCadastro
             return true;
         }
 
-        return filter_var(value: $url, options: FILTER_VALIDATE_URL) !== false;
+        return filter_var(value: $url, filter: FILTER_VALIDATE_URL) !== false;
     }
 
     /**
@@ -354,13 +351,10 @@ return new class extends clsCadastro
     public function Editar()
     {
         if (!$this->validaFormatoUrl(url: $this->url)) {
-            // Inalcançável: `validaFormatoUrl()` nunca devolve falso, porque `filter_var()` recebe o filtro como `options`.
-            // @codeCoverageIgnoreStart
             $this->mensagem = 'O campo Site deve conter uma URL válida (ex: https://www.exemplo.com.br).';
             $this->busca_empresa = true;
 
             return false;
-            // @codeCoverageIgnoreEnd
         }
 
         if (!empty($this->email) && filter_var($this->email, FILTER_VALIDATE_EMAIL) === false) {

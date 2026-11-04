@@ -144,13 +144,22 @@ test('recusa cada dado inválido com a sua mensagem', function (array $overrides
     'fax sem telefone' => [['telefone_fax' => ''], 'O campo: Fax, deve ser preenchido quando o DDD estiver preenchido.'],
 ]);
 
-test('defeito: aceita um site que não é URL', function () {
-    // filter_var() recebe FILTER_VALIDATE_URL como `options`, não como filtro,
-    // então nada é validado.
-    $this->post($this->new, ($this->payload)(['url' => 'alfa']))->assertRedirect('empresas_lst.php');
 
-    expect(($this->stored)()->url)->toBe('alfa');
+test('recusa site invalido no cadastro', function () {
+    $this->post(
+        $this->new,
+        ($this->payload)(['url' => 'alfa'])
+    )
+        ->assertOk()
+        ->assertSee('O campo Site deve conter uma URL válida');
+
+    expect(
+        LegacyPerson::query()
+            ->where('nome', 'Registro Alfa Ltda')
+            ->exists()
+    )->toBeFalse();
 });
+
 
 test('recusa o CNPJ de outra empresa', function () {
     ($this->organization)();
